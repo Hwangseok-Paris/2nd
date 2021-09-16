@@ -1,6 +1,6 @@
 import React from 'react'
 import Clock from 'react-live-clock'
-
+// npm install --save react react-live-clock
 const Footer = () => {
     return (
         <div>
