@@ -1,38 +1,107 @@
-.App {
-  text-align: center;
+@font-face {
+    font-family: 'NanumBarunpen';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumBarunpen.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+html, body, #root, section, article{
+  height: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*{
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-family: 'NanumBarunpen';
+  height: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+
+
+header{
+  background: rgb(234, 240, 181);
+  display: flex;
+  padding: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+header p{
+  font-size: 18pt;
+ 
+}
+
+footer{
+  display: flex;
+  width: 100%;
+  background: rgb(234, 240, 181);
+  padding-left: 20px;
+  position: fixed;
+  bottom:0;
+  left: 0;
+  line-height: 45px;
+}
+
+footer p {
+  font-size: 10pt;
+}
+
+
+.clock{
+  display: flex;
+  position: fixed;
+  right: 25px;
+  font-weight: 700;
+  letter-spacing: 1pt;
+  font-size: 12pt;
+}
+
+.article_box{
+  width: 33.33%;
+  height: 100%;
+  float: left;
+}
+
+.corona{
+  background: lightblue;
+}
+
+.weather{
+  float: left;
+}
+
+.stock{
+  background: lightcoral;
+}
+
+@media only screen and (max-width: 800px) {
+  .article_box{
+    width:100%;
   }
-  to {
-    transform: rotate(360deg);
+
+  .footer_contents{
+    justify-content: left;
   }
+
+}
+
+.section_title{
+  font-size: 28pt;
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.section_contents{
+  font-size: 13pt;
+  padding: 20px;
+  line-height: 25px;
+}
+
+
+.date{
+  margin-right: 5px;
+  padding: 15px;
 }

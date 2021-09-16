@@ -1,23 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Corona from './components/Corona';
+import Weather from './components/Weather'
+import Stock from './components/Stock';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+
+      <nav></nav>
+      <section>
+        <article className="article_box corona">
+          <Corona />
+        </article>
+        <article className="article_box weather">
+          <Weather />
+        </article>
+        <article className="article_box stock">
+          <Stock />
+        </article>
+      </section>
+
+      <Footer />
     </div>
   );
 }
