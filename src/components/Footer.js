@@ -6,11 +6,11 @@ const Footer = () => {
         <div>
             <footer>
                 <div className="footer_contents">
-                    Since 2021-09-15
+                    Since 2021. 9. 15
                 </div>
                 <div className="clockBox">
                     <div className="clock">
-                        <Clock format={'dddd Do MMM HH:mm:ss'} ticking='true' timezone={'KST'} />
+                        <Clock format={'dddd Do MMM HH:mm:ss'} ticking />
                     </div>
                 </div>
             </footer>
