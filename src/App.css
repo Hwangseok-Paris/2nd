@@ -23,7 +23,8 @@ html, body, #root, section, article{
 
 
 header{
-  background: rgb(234, 240, 181);
+  background:black;
+  color:chartreuse;
   display: flex;
   padding: 20px;
 }
@@ -36,8 +37,8 @@ header p{
 footer{
   display: flex;
   width: 100%;
-  background: rgb(234, 240, 181);
-  padding-left: 20px;
+  background:black;
+  color:chartreuse;  padding-left: 20px;
   position: fixed;
   bottom:0;
   left: 0;

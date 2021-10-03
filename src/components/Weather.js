@@ -7,7 +7,7 @@ const Weather = () => {
     let wList = [];
 
 
-    const loadData = async () => {
+    async function loadData () {
         try {
             const apiURI = "http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/2002629?apikey=dErZnvl3NdBNYGkyNzWN7HGLadweJVxz&language=ko-kr&details=false&metric=true";
             const res = await fetch(apiURI);
@@ -19,18 +19,45 @@ const Weather = () => {
     }
 
     useEffect(() => {
-        loadData().then((data) => {
-            setWData(data);
-            setCWeather({
-                'time': data[0].DateTime,
-                'weather': data[0].IconPhrase,
-                'temp': data[0].Temperature.Value
-            });
-        });
+        async function hehe(){
+            const res = await loadData();
+            return res;
+        }
+
+        hehe().then((data)=> setWData(data)).then(console.log);
+        
     }, []);
 
 
-    console.log(cWeather);
+    // useEffect(() => {
+    //     loadData().then((data) => {
+    //         setWData(data);
+    //         setCWeather({
+    //             'time': data[0].DateTime,
+    //             'weather': data[0].IconPhrase,
+    //             'temp': data[0].Temperature.Value
+    //         });
+    //     });
+    // }, []);
+
+    // console.log(cWeather);
+    // console.log(wData);
+
+
+        // useEffect(() => {
+    //     setCWeather({
+    //         'time': wData[0].DateTime,
+    //         'weather': wData[0].IconPhrase,
+    //         'temp': wData[0].Temperature.Value
+    //     });
+    // }, []);
+    // useEffect(() => {
+    //     console.log(wData[0].DateTime);
+    // });
+
+
+
+
 
     for (var i in wData) {
         wList.push(
