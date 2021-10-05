@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const Weather = () => {
 
     let [wData, setWData] = useState({});
-    let [cWeather, setCWeather] = useState([]);
+    let [cWeather, setCWeather] = useState({});
     let wList = [];
 
 
@@ -18,30 +18,30 @@ const Weather = () => {
         }
     }
 
-    useEffect(() => {
-        async function hehe(){
-            const res = await loadData();
-            return res;
-        }
-
-        hehe().then((data)=> setWData(data)).then(console.log);
-        
-    }, []);
-
-
     // useEffect(() => {
-    //     loadData().then((data) => {
-    //         setWData(data);
-    //         setCWeather({
-    //             'time': data[0].DateTime,
-    //             'weather': data[0].IconPhrase,
-    //             'temp': data[0].Temperature.Value
-    //         });
-    //     });
+    //     async function hehe(){
+    //         const res = await loadData();
+    //         return res;
+    //     }
+
+    //     hehe().then((data)=> setWData(data)).then(console.log);
+        
     // }, []);
 
+
+    useEffect(() => {
+        loadData().then((data) => {
+            setWData(data);
+            setCWeather({
+                'time' : data[0].DateTime,
+                'weather': data[0].IconPhrase,
+                'temp': data[0].Temperature.Value
+            });
+        });
+    }, []);
+
     // console.log(cWeather);
-    // console.log(wData);
+    console.log(wData);
 
 
         // useEffect(() => {
