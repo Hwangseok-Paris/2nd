@@ -1,6 +1,8 @@
 import React from 'react'
 import Clock from 'react-live-clock'
 // npm install --save react react-live-clock
+
+
 const Footer = () => {
     return (
         <div>
@@ -10,7 +12,7 @@ const Footer = () => {
                 </div>
                 <div className="clockBox">
                     <div className="clock">
-                        <Clock format={'dddd Do MMM HH:mm:ss'} ticking />
+                        {/* <Clock /> */}
                     </div>
                 </div>
             </footer>

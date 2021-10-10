@@ -1,3 +1,5 @@
+
+import { slice } from 'cheerio/lib/api/traversing';
 import React, { useEffect, useState } from 'react';
 
 const Weather = () => {
@@ -18,53 +20,29 @@ const Weather = () => {
         }
     }
 
-    // useEffect(() => {
-    //     async function hehe(){
-    //         const res = await loadData();
-    //         return res;
-    //     }
-
-    //     hehe().then((data)=> setWData(data)).then(console.log);
-        
-    // }, []);
-
-
     useEffect(() => {
         loadData().then((data) => {
             setWData(data);
             setCWeather({
                 'time' : data[0].DateTime,
                 'weather': data[0].IconPhrase,
-                'temp': data[0].Temperature.Value
+                'temp': data[0].Temperature.Value,
+                'Icon' : "https://developer.accuweather.com/sites/default/files/"+  data[0].WeatherIcon + "-s.png" 
             });
         });
     }, []);
 
-    // console.log(cWeather);
     console.log(wData);
 
-
-        // useEffect(() => {
-    //     setCWeather({
-    //         'time': wData[0].DateTime,
-    //         'weather': wData[0].IconPhrase,
-    //         'temp': wData[0].Temperature.Value
-    //     });
-    // }, []);
-    // useEffect(() => {
-    //     console.log(wData[0].DateTime);
-    // });
-
-
-
-
-
     for (var i in wData) {
+        const dateTime = wData[i].DateTime;
+        const date = dateTime.slice(11, 16);
         wList.push(
             <tr>
-                <td>{wData[i].DateTime}</td>
+                <td>{date}</td>
                 <td>{wData[i].Temperature.Value} &#8451;</td>
                 <td>{wData[i].IconPhrase}</td>
+                <td>{wData[i].PrecipitationProbability}%</td>
             </tr>
         )
     };
@@ -75,20 +53,23 @@ const Weather = () => {
                 <p className="section_title">Weather</p>
                 <div className="section_contents">
                     <div className='currentWeather'>
-                        <div className='weatherIcon'></div>
+                        <div className='weatherIcon'>
+                            <img className="weatherIcon" src={cWeather.Icon} alt="WeatherIcon" />
+                        </div>
                         <div>
-                            <p>기온 : {cWeather.temp} &#8451;</p>
-                            <p>기상 :  {cWeather.weather}</p>
+                            <span>{cWeather.temp} &#8451;</span> &nbsp;/&nbsp;&nbsp;
+                            <span>{cWeather.weather}</span>  
                         </div>
                     </div>
                     <table className="weatherTable">
-                        <caption>기상 예보</caption>
+                        <caption>기상 예보 (12시간)</caption>
                         <thead>
 
                             <tr>
                                 <th className="wTime">시간</th>
                                 <th className="wTemp">기온</th>
                                 <th className="wWeather">기상</th>
+                                <th className="rainProbability">강수확률</th>
                             </tr>
                         </thead>
                         <tbody>
