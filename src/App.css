@@ -1,45 +1,48 @@
 @font-face {
-    font-family: 'NanumBarunpen';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumBarunpen.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "NanumBarunpen";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumBarunpen.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
-html, body, #root, section, article{
+html,
+body,
+#root,
+section,
+article {
   height: 100%;
 }
 
-*{
+* {
   box-sizing: border-box;
 }
 
-
-.App{
+.App {
   display: flex;
   flex-direction: column;
-  font-family: 'NanumBarunpen';
+  font-family: "NanumBarunpen";
   height: 100%;
 }
 
-
-
-header{
-  background: rgb(234, 240, 181);
+header {
+  background: black;
+  color: chartreuse;
   display: flex;
   padding: 20px;
 }
 
-header p{
+header p {
   font-size: 18pt;
- 
 }
 
-footer{
+footer {
   display: flex;
   width: 100%;
-  background: rgb(234, 240, 181);
+  background: black;
+  color: chartreuse;
   padding-left: 20px;
   position: fixed;
-  bottom:0;
+  bottom: 0;
   left: 0;
   line-height: 45px;
 }
@@ -48,8 +51,7 @@ footer p {
   font-size: 10pt;
 }
 
-
-.clock{
+.clock {
   display: flex;
   float: left;
   font-weight: 700;
@@ -58,78 +60,100 @@ footer p {
   text-align: left;
 }
 
-.article_box{
+.article_box {
   width: 33.33%;
   height: 100%;
   float: left;
 }
 
-.corona{
+.corona {
   background: lightblue;
 }
 
-.weather{
+.weather {
   float: left;
 }
 
-.stock{
+.stock {
   background: lightcoral;
 }
 
 @media only screen and (max-width: 800px) {
-  .article_box{
-    width:100%;
+  .article_box {
+    width: 100%;
   }
 
-  .footer_contents{
+  .footer_contents {
     justify-content: left;
   }
-
 }
 
-.section_title{
+.section_title {
   font-size: 28pt;
   text-align: center;
   padding: 10px;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
-.section_contents{
+.section_contents {
   font-size: 13pt;
   padding: 20px;
   line-height: 25px;
-  
 }
 
-
-.date{
+.date {
   margin-right: 5px;
   padding: 15px;
 }
 
-.clockBox{
+.clockBox {
   position: fixed;
   right: 0.5%;
   width: 230px;
   height: auto;
-  
 }
 
-
-
-.weatherTable{
+.weatherTable {
   text-align: center;
   justify-content: center;
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
 }
 
-.wTime{
-  width: 50%;
-}
-
-.wTemp{
+.wTime {
   width: 20%;
 }
-.wWeather{
-  width:30%;
+
+.wTemp {
+  width: 20%;
+}
+.wWeather {
+  width: 25%;
+}
+rainProbability {
+  width: 20%;
+}
+
+.weatherTable caption {
+  font-size: 15pt;
+  padding: 10px 0;
+}
+
+.weatherTable thead {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  line-height: 30px;
+  background-color: lavenderblush;
+}
+
+.currentWeather {
+  padding: 10px;
+  text-align: center;
+  font-size: 15pt;
+  margin-bottom: 50px;
+}
+
+.currentWeather img {
+  width: 35%;
+  padding: 50px;
 }
