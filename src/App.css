@@ -130,7 +130,8 @@ footer p {
 .wWeather {
   width: 25%;
 }
-rainProbability {
+
+.rainProbability {
   width: 20%;
 }
 
@@ -154,6 +155,6 @@ rainProbability {
 }
 
 .currentWeather img {
-  width: 35%;
-  padding: 50px;
+  min-width: 250px;
+  padding: 40px;
 }
