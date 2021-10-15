@@ -17,6 +17,7 @@ const Weather = () => {
             console.error(e);
         }
     }
+    
 
     // useEffect(() => {
     //     async function hehe(){
@@ -56,6 +57,7 @@ const Weather = () => {
     // });
 
 
+    
 
 
 
