@@ -1,7 +1,13 @@
-import { data } from "jquery";
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 const Corona = () => {
+
+  let [report, setReport] = useState({});
+  let dataobj = [];
+  let cList = [];
+
+
+
   // 오늘 날짜 yyyyMMdd 형식으로 출력
   let today = new Date();
   let year = today.getFullYear();
@@ -11,68 +17,94 @@ const Corona = () => {
   date = date < 10 ? "0" + date : date;
   let cDate = "" + year + month + date;
 
-  console.log(cDate);
+  // console.log(cDate);
 
   // api 호출시 검색 기준 날짜 구하기
-  let yesterday = new Date(year, month, date - 2);
+  let yesterday = new Date(year, month, date - 7);
   let sMonth = yesterday.getMonth();
   sMonth = sMonth < 10 ? "0" + sMonth : sMonth;
   let sDate = yesterday.getDate();
   sDate = sDate < 10 ? "0" + sDate : sDate;
   let pDate = "" + year + sMonth + sDate;
 
-  console.log(pDate);
+  // console.log(pDate);
 
-  // async function callApi() {
-  //   try {
-  //     const apiURI = '/openapi/service/rest/Covid19/getCovid19InfStateJson?';
-  //     const serviceKey = 'serviceKey='+'cQX2tuEo3RdqGIBL9I+Ijco1RG1lJLBAJx42KXlBFEAz+42TuIldCI2WjIZwXhYavIJpTgnu2ZWayuXCHaQwRw==';
-  //     let dateRange = '&startCreateDt=' + pDate + "&endCreateDt=" + cDate;
-  //     let requestURI = apiURI + serviceKey + dateRange;
-  //     const res = await fetch(requestURI);
-  //     const data = await res.json();
-  //     console.log(res);
-  //     return data;
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // }
-
-  // callApi();
-
-    var resText;
-    var xhr = new XMLHttpRequest();
-    const serviceKey = 'cQX2tuEo3RdqGIBL9I%2BIjco1RG1lJLBAJx42KXlBFEAz%2B42TuIldCI2WjIZwXhYavIJpTgnu2ZWayuXCHaQwRw%3D%3D';
+  var resText;
+  var xhr = new XMLHttpRequest();
+  const serviceKey = 'cQX2tuEo3RdqGIBL9I%2BIjco1RG1lJLBAJx42KXlBFEAz%2B42TuIldCI2WjIZwXhYavIJpTgnu2ZWayuXCHaQwRw%3D%3D';
   var url = '/openapi/service/rest/Covid19/getCovid19InfStateJson'; /*URL*/
-  var queryParams = '?' + encodeURIComponent('serviceKey') + '='+serviceKey; /*Service Key*/
+  var queryParams = '?' + encodeURIComponent('serviceKey') + '=' + serviceKey; /*Service Key*/
   queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /**/
   queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /**/
   queryParams += '&' + encodeURIComponent('startCreateDt') + '=' + encodeURIComponent(pDate); /**/
   queryParams += "&" + encodeURIComponent("endCreateDt") + "=" + encodeURIComponent(cDate); /**/
-xhr.open('GET', url + queryParams);
-xhr.onreadystatechange = function () {
-  if (this.readyState == xhr.DONE) {
-    if (xhr.status === 200 || xhr.status === 201) {
-      // console.log('Status: ' + this.status + 'nHeaders: ' + JSON.stringify(this.getAllResponseHeaders()) + 'nBody: ' + this.responseText);
-      console.log('succed' + xhr.responseText);
-    } else {
-      console.log('error occured' + xhr.responseText);
-    }
-  }
-};
-
+  xhr.open('GET', url + queryParams);
   
-  xhr.send();
+
+  xhr.onreadystatechange = function () {
+    if (this.readyState == xhr.DONE) {
+      if (xhr.status === 200) {
+        myFunction(this);
+      } else {
+      }
+    }
+  };
+  
+  
+
+  function myFunction(xml) {
+    var xmlDoc = xml.responseXML;
+    let decideCnt, report, stateDt;
+
+    report = xmlDoc.getElementsByTagName("item");
+    decideCnt = xmlDoc.getElementsByTagName("decideCnt"); // 확진자수
+    stateDt = xmlDoc.getElementsByTagName("stateDt"); // 날짜
+
+    for (var i = 0; i < report.length; i++) {
+      dataobj.push({
+        "stateDt": stateDt[i].textContent,
+        "decideCnt": decideCnt[i].textContent
+      })
+    }
+    // setReport(dataobj);
+    // console.log(dataobj);
+
+  };
+
+  useEffect(() => {
+    xhr.send();
+    setReport(dataobj);
+  }, [])
+  
+  console.log(report);
+
+
+  for (var i = 0; i < 8; i++) {
+    cList.push(
+      <tr>
+        <td>123</td>
+        <td>123</td>
+      </tr>
+    );
+  }
+
+
+
 
   return (
     <>
       <div>
         <p className="section_title">Corona</p>
         <div className="section_contents">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque
-          magnam veniam debitis voluptatum incidunt officia maiores voluptas
-          laborum excepturi! Quae, aperiam. Magnam ex tempore doloremque!
-          Reiciendis laborum reprehenderit dignissimos ratione!
+          <table>
+            <thead>
+              <tr>
+                <th>날짜</th>
+                <th>확진자수</th>
+              </tr>
+            </thead>
+            <tbody>{cList}</tbody>
+          </table>
         </div>
       </div>
     </>

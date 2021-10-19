@@ -11,7 +11,7 @@ const Weather = () => {
         "http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/2002629?apikey=dErZnvl3NdBNYGkyNzWN7HGLadweJVxz&language=ko-kr&details=false&metric=true";
       const res = await fetch(apiURI);
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
       return data;
     } catch (e) {
       console.error(e);
