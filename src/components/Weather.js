@@ -8,7 +8,7 @@ const Weather = () => {
   async function loadData() {
     try {
       const apiURI =
-        "http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/2002629?apikey=dErZnvl3NdBNYGkyNzWN7HGLadweJVxz&language=ko-kr&details=false&metric=true";
+        "http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/2002629?apikey=D8cOadH6qpGsG7SV1OgXsLXSLKNUkXeH&language=ko-kr&details=false&metric=true";
       const res = await fetch(apiURI);
       const data = await res.json();
       return data;
@@ -38,7 +38,7 @@ const Weather = () => {
     const dateTime = wData[i].DateTime;
     const date = dateTime.slice(11, 16);
     wList.push(
-      <tr>
+      <tr key={date}>
         <td>{date}</td>
         <td>{wData[i].Temperature.Value} &#8451;</td>
         <td>{wData[i].IconPhrase}</td>
@@ -67,7 +67,7 @@ const Weather = () => {
           </div>
           <table className="weatherTable">
             <caption>기상 예보 (12시간)</caption>
-            <thead>
+            <thead className="wTablehead">
               <tr>
                 <th className="wTime">시간</th>
                 <th className="wTemp">기온</th>
@@ -75,8 +75,10 @@ const Weather = () => {
                 <th className="rainProbability">강수확률</th>
               </tr>
             </thead>
-            <tbody>{wList}</tbody>
-            <tfoot></tfoot>
+            <tbody>
+              {wList}
+            </tbody>
+            <tfoot><tr></tr></tfoot>
           </table>
         </div>
       </div>

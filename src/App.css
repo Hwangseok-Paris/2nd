@@ -116,7 +116,7 @@ footer p {
 .weatherTable {
   text-align: center;
   justify-content: center;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -156,4 +156,33 @@ rainProbability {
 .currentWeather img {
   width: 35%;
   padding: 50px;
+}
+
+.coronaTable{
+  text-align: center;
+  justify-content: center;
+  width: 90%;
+  margin: 0 auto;
+  line-height: 50px;
+  margin-top: 60px;
+}
+
+.coronaTable .empty{
+  width: 25%;
+}
+
+.coronaTable .newConfirmed, .newDeath{
+  width: 50%;
+}
+
+.coronaTable thead{
+  font-weight: 600;
+  font-size: 13pt;
+  border-bottom: 1px black solid;
+}
+
+.coronaTable th:first-child, td:first-child{
+  border-right: 1px black solid;
+  font-weight: 600;
+  font-size: 13pt;
 }
